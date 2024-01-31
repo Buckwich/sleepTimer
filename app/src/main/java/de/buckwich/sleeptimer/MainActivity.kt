@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
         try {
             sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
-            accelerationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)
+            accelerationSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION)!!
         } catch (e: Exception) {
             Toast.makeText(context, "Your device does not support movement detection ", Toast.LENGTH_LONG).show()
         }
