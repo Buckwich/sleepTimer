@@ -13,7 +13,7 @@ import android.media.session.MediaSessionManager
 import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         stopButton = findViewById(R.id.stopButton)
 
         textDefaultColor = remainingTimeTextView.textColors
-        progressDefaultColor = remainingTimeProgressBar.progressTintList
+        progressDefaultColor = remainingTimeProgressBar.progressTintList!!
 
         accelerationEventListener = AccelerationEventListener(context, threshold)
         mediaPlayerMove = MediaPlayer.create(context, notification)
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "pauseAll")
         var pausedMedia = ""
         for (session in getActiveSessions(context)) {
-            pausedMedia = pausedMedia + session.metadata.description + System.getProperty("line.separator")
+            pausedMedia = pausedMedia + session.metadata!!.description + System.getProperty("line.separator")
             session.transportControls.pause()
         }
 
